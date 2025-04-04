@@ -9,6 +9,10 @@
 
 // Custom Libraries
 
-
+#include "libs/src/structs.h"
+#include "libs/src/OTV_math.h"
+#include "libs/src/OTV_math.c"
+#include "libs/src/movement.h"
+#include "libs/src/movement.c"
 
 #endif OTV_H
