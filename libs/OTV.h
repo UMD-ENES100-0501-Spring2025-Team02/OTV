@@ -9,10 +9,11 @@
 
 // Custom Libraries
 
-#include "libs/src/structs.h"
-#include "libs/src/OTV_math.h"
-#include "libs/src/OTV_math.c"
-#include "libs/src/movement.h"
-#include "libs/src/movement.c"
+#include "src/structs.h"
+#include "src/OTV_math.c"
+#include "src/movement.c"
+#include "src/wifi_communication.c"
+#include "src/mission_navigation.c"
+#include "src/log_navigation.c"
 
 #endif OTV_H

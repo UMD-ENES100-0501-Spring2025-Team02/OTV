@@ -13,8 +13,10 @@
 #define TX 1
 #define RX 0
 
-#define MOTOR_1 1
-#define MOTOR_2 2
+// CONSTANTS
+
+#define MARKER_ID 
+#define ROOM_NUMBER
 
 void setup() {
   Serial.begin(9600);
@@ -32,5 +34,6 @@ void setup() {
 }
 
 void loop() {
-
+  stage01();
+  stage05();
 }

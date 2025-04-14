@@ -1,4 +1,4 @@
-#include <math.h>
+#include "math.h"
 
 // Interval is changed to be from [0, 2 * PI]
 void change_interval(coordinate *coordinate, int interval){
@@ -19,7 +19,6 @@ void change_interval(coordinate *coordinate, int interval){
  * the angle from the point to the positive x-axis.
  */
 void virtual_reference(coordinate *coordinate, float r, float theta){
-    coordinate->theta = theta;
     coordinate->x = coordinate->x + r * (float)cos(theta);
     coordinate->y = coordinate->y + r * (float)sin(theta);
 }
