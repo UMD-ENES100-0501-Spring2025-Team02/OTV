@@ -37,39 +37,7 @@ void setup() {
 }
 
 void loop() {
-    move(PWM, FORWARD, MIS);
-    Serial.println("Forward MIS");
-    delay(DELAY);
-    move(PWM, BACKWARD, MIS);
-    Serial.println("Backward MIS");
-    delay(DELAY);
-    turn(PWM, RIGHT, MIS);
-    Serial.println("Right MIS");
-    delay(DELAY);
-    turn(PWM, LEFT, MIS);
-    Serial.println("Left MIS");
-    delay(DELAY);
-
-    stop_drive();
-    Serial.println("STOP");
-    delay(5000);
-
     move(PWM, FORWARD, NAV);
-    Serial.println("Forward NAV");
-    delay(DELAY);
-    move(PWM, BACKWARD, NAV);
-    Serial.println("Backward NAV");
-    delay(DELAY);
-    turn(PWM, RIGHT, NAV);
-    Serial.println("Right NAV");
-    delay(DELAY);
-    turn(PWM, LEFT, NAV);
-    Serial.println("Left NAV");
-    delay(DELAY);
-
-    stop_drive();
-    Serial.println("STOP");
-    delay(5000);
 }
 
 void move(int pwm, int dir, int face){

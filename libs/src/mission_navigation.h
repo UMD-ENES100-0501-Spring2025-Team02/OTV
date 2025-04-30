@@ -2,18 +2,21 @@
 #define MISSION_NAVIGATION_H
 
 #define MIS_X 0.55
-#define MIS_UY 1.45
-#define MIS_DY 0.55
-#define M_NAV_SPEED 255
-#define M_T_TOLERANCE 0.05
-#define M_R_BOUND 0.56
-#define M_L_BOUND 0.54
-#define M_NAV_LANE 0.005
-#define STOP_BEF_MIS 0.05
+#define MIS_UY 1.10 // Theo
+#define MIS_DY 0.90 // Theo
+#define STOP_BEF_MIS 0.025 // Depends on physical constraints
+#define M_NAV_SPEED 125 // Depends on wheels of OTV so might need to be changed
+#define M_T_TOLERANCE 0.2 // Changed
+#define S1_DELAY 1000
+#define CLAW_CENTER_R 0.35
+#define CLAW_CENTER_T 0
+#define ALIGN_T_TOLERANCE 0.01
+#define ALIGN_T_DELAY 250
 
 void stage01();
 void orient_towards_mission(coordinate *mission);
 void move_to_mission(coordinate *mission);
-void movement_correction_mission(coordinate *mission);
+void align_claw(coordinate *mission);
+void surround_pylon();
 
 #endif MISSION_NAVIGATION_H

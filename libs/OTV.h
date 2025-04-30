@@ -9,10 +9,11 @@
 
 // Custom Libraries
 
+#include "src/motor_controls.c"
 #include "src/structs.h"
 #include "src/OTV_math.c"
-#include "src/movement.c"
 #include "src/wifi_communication.c"
+#include "src/movement.c"
 #include "src/mission_navigation.c"
 #include "src/log_navigation.c"
 

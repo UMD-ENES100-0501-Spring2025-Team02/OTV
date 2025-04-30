@@ -1,10 +1,8 @@
 #ifndef MATH_H
 #define MATH_H
 
-#define STD_INTV 1
-#define VIS_INTV 2
-
-void change_interval(coordinate *coordinate, int interval);
+void change_interval(float *theta);
 void virtual_reference(coordinate *coordinate, float raduis, float theta);
+float angle_with_x_axis(coordinate origin, coordinate *p);
 
 #endif MATH_H

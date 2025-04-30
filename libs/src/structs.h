@@ -7,4 +7,8 @@ typedef struct coordinate {
     float theta;
 } coordinate;
 
+// GLOBAL STRUCTS
+
+coordinate otv;
+
 #endif STRUCTS_H

@@ -1,16 +1,9 @@
-#include "math.h"
+#include "OTV_math.h"
 
 // Interval is changed to be from [0, 2 * PI]
-void change_interval(coordinate *coordinate, int interval){
-    if (interval == STD_INTV){
-        if (coordinate->theta < 0){
-            coordinate->theta += 2 * PI;
-        }
-    } else {
-        if (coordinate->theta > PI){
-            coordinate->theta -= 2 * PI;
-        }
-    }
+void change_interval(float *theta){
+    while (*theta < 0) *theta += 2 * PI;
+    while (*theta >= 2 * PI) *theta -= 2 * PI;
 }
 
 /*
@@ -19,6 +12,14 @@ void change_interval(coordinate *coordinate, int interval){
  * the angle from the point to the positive x-axis.
  */
 void virtual_reference(coordinate *coordinate, float r, float theta){
-    coordinate->x = coordinate->x + r * (float)cos(theta);
-    coordinate->y = coordinate->y + r * (float)sin(theta);
+    float relative_theta = coordinate->theta + theta;
+    change_interval(&relative_theta);
+    coordinate->x = coordinate->x + r * (float)cos(relative_theta);
+    coordinate->y = coordinate->y + r * (float)sin(relative_theta);
+}
+
+float angle_with_x_axis(coordinate origin, coordinate *p) {
+    float dx = p->x - origin.x;
+    float dy = p->y - origin.y;
+    return p->theta = atan2(dy, dx); // angle in radians, [-pi, pi]
 }
