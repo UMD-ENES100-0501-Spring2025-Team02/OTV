@@ -16,5 +16,4 @@ void rotate_to_obstacles();
 void obstacle_navigation();
 int bump_sensor();
 
-
 #endif OBSTACLE_NAVIGATION_H

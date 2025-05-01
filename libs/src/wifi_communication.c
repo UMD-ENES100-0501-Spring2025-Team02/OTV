@@ -28,6 +28,12 @@ int visibility_check(float v_r, float v_theta, int pick){
     while (!Enes100.isVisible()){
         stop_drive();
         get_coordinates(v_r, v_theta, pick);
+        //if (!Enes100.isVisible()){
+            //move(200, FORWARD, MIS);
+            //delay(250);
+            //move(200, BACKWARD, MIS);
+            //delay(250);
+        //}
     }
     return TRUE;
 }
@@ -66,7 +72,7 @@ int compare_angles(coordinate otv, coordinate *compare, float v_r, float v_theta
     Enes100.println("OTV Theta");
     Enes100.print(angle1);
     get_coordinates(0, 0, ALL);
-    visibility_check(v_r, v_theta, ALL);
+    visibility_check(0, 0, ALL);
     float angle3 = angle_with_x_axis(otv, compare);
     Enes100.println("CLAW to PYLON Theta");
     Enes100.print(angle3);
@@ -82,6 +88,6 @@ int compare_angles(coordinate otv, coordinate *compare, float v_r, float v_theta
     Enes100.println("angle_between");
     Enes100.print(angle_between);
 
-    delay(7500);
+    delay(10000);
     return fabs(angle_between) <= tolerance ? 1 : 0;
 }

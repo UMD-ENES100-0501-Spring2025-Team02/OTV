@@ -50,9 +50,11 @@ void align_claw(coordinate *mission){
         if (otv_t_greater){
             turn(M_NAV_SPEED, LEFT, MIS);
             delay(ALIGN_T_DELAY);
+            stop_drive();
         } else {
             turn(M_NAV_SPEED, RIGHT, MIS);
             delay(ALIGN_T_DELAY);
+            stop_drive();
         }
     }
 }
