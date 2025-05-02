@@ -1,8 +1,7 @@
-#ifndef MATH_H
-#define MATH_H
+#ifndef OTV_MATH_H
+#define OTV_MATH_H
 
 void change_interval(float *theta);
-void virtual_reference(coordinate *coordinate, float raduis, float theta);
-float angle_with_x_axis(coordinate origin, coordinate *p);
+float calculate_angle(coordinate origin, coordinate *p);
 
-#endif MATH_H
+#endif OTV_MATH_H

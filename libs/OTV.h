@@ -17,6 +17,7 @@
 #include "src/movement.c"
 #include "src/mission_navigation.c"
 #include "src/mission_objective.cpp"
+#include "src/obstacle_navigation.c"
 #include "src/log_navigation.c"
 
 #endif OTV_H

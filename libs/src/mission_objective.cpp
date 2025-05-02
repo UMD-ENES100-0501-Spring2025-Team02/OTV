@@ -31,7 +31,6 @@ void flipSilo() {
     move(255, FORWARD, MIS);
     CLAW.write(90);
     delay(500);
-    stop_drive();
 
   //pulse three
     FLIP.write(0);
@@ -40,7 +39,8 @@ void flipSilo() {
     stop_drive();
 
   //the big movement
-    FLIP.write(0); CLAW.write(0); delay(1600); // rotate the silo add a bit of extra grip
+    FLIP.write(0); CLAW.write(0); delay(5000); // rotate the silo add a bit of extra grip
+    reverseSilo();
     FLIP.detach(); CLAW.detach();
 }
 
@@ -65,11 +65,11 @@ void is_it_magnetic() {
     delay(50);  // chatgpt recommended to not "overload CPU"
   }
   if (magneticDetected) {
-    Enes100.println("Magnetic Puck");
+    Enes100.mission(MAGNETISM, MAGNETIC);
     bool checked = false;
   }
   else {
-    Enes100.println("Non-Magnetic Puck");
+    Enes100.mission(MAGNETISM, NOT_MAGNETIC);
   }
 }
 

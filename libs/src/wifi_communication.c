@@ -1,6 +1,6 @@
 #include "wifi_communication.h"
 
-void get_coordinates(float r, float theta, int pick){
+void get_coordinates(int pick){
     switch (pick){
         case XY:
             otv.y = Enes100.getY();
@@ -21,13 +21,13 @@ void get_coordinates(float r, float theta, int pick){
     }
     
     change_interval(&otv.theta);
-    virtual_reference(&otv, r, theta);
 }
 
-int visibility_check(float v_r, float v_theta, int pick){
+int visibility_check(int pick){
+    get_coordinates(pick);
     while (!Enes100.isVisible()){
         stop_drive();
-        get_coordinates(v_r, v_theta, pick);
+        get_coordinates(pick);
         //if (!Enes100.isVisible()){
             //move(200, FORWARD, MIS);
             //delay(250);
@@ -63,31 +63,33 @@ void print_coordinates(){
     vision_print_coordinates();
 }
 
-int compare_angles(coordinate otv, coordinate *compare, float v_r, float v_theta, float tolerance, int *otv_t_greater){
-    get_coordinates(v_r, v_theta, ALL); // Add visibility check
-    vision_print_coordinates();
-    visibility_check(v_r, v_theta, ALL);
+int compare_angles(coordinate origin, coordinate *compare, float tolerance, int *origin_t_greater){
+    visibility_check(ALL);
+        vision_print_coordinates();
 
-    float angle1 = otv.theta;
-    Enes100.println("OTV Theta");
-    Enes100.print(angle1);
-    get_coordinates(0, 0, ALL);
-    visibility_check(0, 0, ALL);
-    float angle3 = angle_with_x_axis(otv, compare);
-    Enes100.println("CLAW to PYLON Theta");
-    Enes100.print(angle3);
+        Enes100.print("origin_theta");
+        Enes100.println(origin.theta);
     
-    *otv_t_greater = angle1 > angle3 ? 1 : 0;
-    Enes100.println("otv_t_greater");
-    Enes100.print(*otv_t_greater);
+    compare->theta = calculate_angle(origin, compare);
+    
+        Enes100.print("compare_theta");
+        Enes100.println(compare->theta);
+    
+    float diff = otv.theta - compare->theta;
+    
+        Enes100.print("diff");
+        Enes100.println(diff);
 
-    float diff = fabs(angle1 - angle3);
-    Enes100.println("diff");
-    Enes100.print(diff);
-    float angle_between = fmin(diff, 2 * PI - diff);
-    Enes100.println("angle_between");
-    Enes100.print(angle_between);
+    // Normalize the difference to [-π, π] for proper comparison
+    while (diff < -PI) diff += 2 * PI;
+    while (diff > PI) diff -= 2 * PI;
 
-    delay(10000);
-    return fabs(angle_between) <= tolerance ? 1 : 0;
+    // Determine which angle is greater
+    *origin_t_greater = (diff > 0) ? TRUE : FALSE;
+    
+        Enes100.print("origin_t_greater");
+        Enes100.println(*origin_t_greater);
+
+    // Check if angles are within the tolerance
+    return (fabsf(diff) <= tolerance) ? 1 : 0;
 }
