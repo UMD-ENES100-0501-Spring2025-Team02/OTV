@@ -20,6 +20,7 @@ void obstacle_navigation(){
             if (bump_sensor()){
                 go_to = otv.y;
                 obstacle = TRUE;
+                Enes100.print("Bump");
                 obstacle_protocol(STAGE2, &go_to);
                 break;
             }
@@ -27,6 +28,7 @@ void obstacle_navigation(){
     }
     
     if (obstacle){
+        Enes100.print("Hit");
         angle = otv.y > go_to ? -PI/2 : PI/2;
         go_to = angle == PI/2 ? go_to + SHIFT : go_to - SHIFT;
         turn_to(OB_NAV_SPEED, angle, OB_T_TOLERANCE, NAV);
@@ -43,7 +45,17 @@ void obstacle_navigation(){
             }
         }
     } else {
-        obstacle_protocol(LOG_X, &go_to);
+        Enes100.print("No Hit");
+        while (otv.x < LOG_X){
+            if (visibility_check(XY)){
+                move(OB_NAV_SPEED, FORWARD, NAV);
+                if (bump_sensor()){
+                    Enes100.print("Bump");
+                    obstacle_protocol(STAGE2, &go_to);
+                    break;
+                }
+            }
+        }
     }
     stop_drive();
 }
@@ -53,6 +65,7 @@ void obstacle_protocol(float stage, float *go_to){
     int i, passed = FALSE;
     
     visibility_check(ALL);
+    Enes100.print("Protocol");
     if (otv.y > 1){
         angle = -PI/2;
         mid_ob_low = MID_OB_LOW - SHIFT;
@@ -70,14 +83,14 @@ void obstacle_protocol(float stage, float *go_to){
         
         //move(OB_NAV_SPEED, FORWARD, NAV);
         switch (i){
-            case 1:
+            case 0:
                 while (otv.y <= mid_ob_low || otv.y >= mid_ob_high){
                     if (visibility_check(Y)){
                         move(OB_NAV_SPEED, FORWARD, NAV);
                     }
                 }
                 break;
-            case 2:
+            case 1:
                 while (otv.y <= TOP_OB && otv.y >= BOT_OB){
                     if (visibility_check(Y)){
                         move(OB_NAV_SPEED, FORWARD, NAV);

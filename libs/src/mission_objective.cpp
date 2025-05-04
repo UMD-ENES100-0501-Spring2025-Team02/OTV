@@ -19,29 +19,35 @@ void stage02(){ // run into silo as claw gripping, the second a duty cycle can b
 
 void flipSilo() {
   //pulse one
-    CLAW.write(80); // close claw
+    FLIP.attach(FLIP_SERVO_PIN);
+    CLAW.write(110); // close claw
     delay(1000);  // without delay it will run forward as the claw closes, with delay, it will close wait 0.5 seconds then start moving
     move(255, FORWARD, MIS);
-    CLAW.write(90); // squeezing the living fuck out the silo
-    delay(2000); // move forward for 0.5 seconds
+    CLAW.write(115); // squeezing the living fuck out the silo
+    delay(1500); // move forward for 0.5 seconds
     stop_drive();
     delay(1000);
 
   //pulse two
-    move(255, FORWARD, MIS);
-    CLAW.write(90);
-    delay(500);
+    if (visibility_check(ALL)){
+        if (otv.y < 1){
+            move(255, FORWARD, MIS);
+            CLAW.write(110);
+            delay(500);
+        }
+    }
 
   //pulse three
     FLIP.write(0);
     move(255, FORWARD, MIS);
     delay(750);
     stop_drive();
+    Enes100.print("Waiting to open");
+    delay(1200);
 
   //the big movement
-    FLIP.write(0); CLAW.write(0); delay(5000); // rotate the silo add a bit of extra grip
-    reverseSilo();
-    FLIP.detach(); CLAW.detach();
+    FLIP.detach(); CLAW.write(0); delay(2200); // rotate the silo add a bit of extra grip
+    CLAW.detach();
 }
 
 void reverseSilo() {

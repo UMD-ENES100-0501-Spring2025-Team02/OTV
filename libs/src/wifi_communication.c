@@ -28,12 +28,6 @@ int visibility_check(int pick){
     while (!Enes100.isVisible()){
         stop_drive();
         get_coordinates(pick);
-        //if (!Enes100.isVisible()){
-            //move(200, FORWARD, MIS);
-            //delay(250);
-            //move(200, BACKWARD, MIS);
-            //delay(250);
-        //}
     }
     return TRUE;
 }

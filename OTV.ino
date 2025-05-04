@@ -59,7 +59,7 @@ void setup() {
 }
 
 void loop() {
-  stage01();
-  delay(5000);
+  stage03();
+  delay(10000);
 }
 

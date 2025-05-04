@@ -9,11 +9,11 @@
 
 #define GO_TO_TOLERANCE 0.1
 
-#define STAGE2 1.8
-#define LOG_X 3
+#define STAGE2 2
+#define LOG_X 3.5
 
-#define OB_NAV_SPEED 255
-#define OB_T_TOLERANCE 0.05
+#define OB_NAV_SPEED 200
+#define OB_T_TOLERANCE 0.2
 
 #define PROTOCOL_DELAY 250
 
