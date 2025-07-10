@@ -142,7 +142,7 @@ Use this repository for inspiration only. Avoid directly copying designs or solu
 
 Below are the names and contact information of each team member. Contact information only includes LinkedIn profiles and GitHub accounts if the team member has one as of May 2025.
 
-- Thomas Kimberlin - [LinkedIn](www.linkedin.com/in/thomas-kimberlin) | [GitHub](https://github.com/ThomasKimberlin)
+- Thomas Kimberlin - [LinkedIn](https://www.linkedin.com/in/thomas-kimberlin) | [GitHub](https://github.com/ThomasKimberlin)
 - Ryan Tran - [LinkedIn](https://www.linkedin.com/in/rht0120/) | [GitHub](https://github.com/RyanfromBryan)
 - Steven Vilcheck - [LinkedIn](https://www.linkedin.com/in/steven-vilcheck-602180320/)
 - Jacquelyn Eng - [LinkedIn](https://www.linkedin.com/in/jacquelyn-eng-358281332/)
