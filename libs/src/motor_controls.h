@@ -5,7 +5,10 @@
 #ifndef MOTOR_CONTROLS_H
 #define MOTOR_CONTROLS_H
 
-// The macro MIS indicates the front of the OTV is located at the claw and is used until the Data Extraction mission is complete. The macro NAV indicates the front of the OTV is located at the limit switches and is used throughout obstacle and log navigation.
+/*
+ * The macro MIS indicates the front of the OTV is located at the claw and is used until the Data Extraction mission is complete. The macro NAV indicates the front
+ * of the OTV is located at the limit switches and is used throughout obstacle and log navigation.
+ */
 #define MIS 0
 #define NAV 1
 

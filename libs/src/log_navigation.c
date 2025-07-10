@@ -24,7 +24,12 @@ void stage04(){
     
     // Completes mission by going over the log into the goal zone
     move(L_FINISH_SPEED, FORWARD, NAV);
-    // The vision system returns -1 for x and y coordinates when the OTV is not visibility, as stated in mission_navigation.c, but also when the OTV is not in the arena. So there is an additional check here for that coordinate in order to ensure the OTV is fully in the goal zone. However, be careful since the OTV could perpetually run after reaching the goal zone in some cases, so make sure to catch it on the other side.
+    
+    /*
+     * The vision system returns -1 for x and y coordinates when the OTV is not visibility, as stated in mission_navigation.c, but also when the OTV
+     * is not in the arena. So there is an additional check here for that coordinate in order to ensure the OTV is fully in the goal zone. However, be careful
+     * since the OTV could perpetually run after reaching the goal zone in some cases, so make sure to catch it on the other side.
+     */
     while (otv.x < GOAL_X || otv.x == -1){
         get_coordinates(X);
     }

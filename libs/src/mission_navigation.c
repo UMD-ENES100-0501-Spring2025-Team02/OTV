@@ -11,7 +11,11 @@ void stage01(){
     
     orient_towards_mission(&mission);
     
-    // The general strategy to surround the pylon with the claw is to move towards the pylon up to a certain point, realign so the claw faces the pylon, then move towards the pylon for a certain amount of time. EDIT: This strategy proved to be hit or miss due to the hard coded times after realignment to move forward. A better strategy would be to have a sensor below the claw to determine when the pylon is in the correct position and stop at that point.
+    /*
+     * The general strategy to surround the pylon with the claw is to move towards the pylon up to a certain point, realign so the claw faces the pylon, then move
+     * towards the pylon for a certain amount of time. EDIT: This strategy proved to be hit or miss due to the hard coded times after realignment to move forward.
+     * A better strategy would be to have a sensor below the claw to determine when the pylon is in the correct position and stop at that point.
+     */
     move_to_mission(&mission);
     align_claw(&mission);
     surround_pylon(&mission);
@@ -52,7 +56,10 @@ void move_to_mission(coordinate *mission){
 void align_claw(coordinate *mission){
     int otv_t_greater;
     
-    // Unlike other situations where we want to turn to a specific angle, this code causes the OTV to make incremental rotations with breaks in between in order to get accurate calculations.
+    /*
+     * Unlike other situations where we want to turn to a specific angle, this code causes the OTV to make incremental rotations with breaks in between
+     * in order to get accurate calculations.
+     */
     while (!compare_angles(otv, mission, ALIGN_T_TOLERANCE, &otv_t_greater)){
         if (otv_t_greater){
             turn(M_NAV_SPEED + ALIGN_SPEED_OFFSET, RIGHT, MIS);
@@ -70,7 +77,10 @@ void align_claw(coordinate *mission){
 void surround_pylon(coordinate *mission){
     move(M_NAV_SPEED, FORWARD, MIS);
     
-    // This if statement is dependent on physical conditions, allowing the OTV to move further depending on where the the pylon ended up during randomization. The statement, along with the macro MIS_LOCO_DELAY_OFFSET can be removed or altered depending on the conditions of the arena and testing.
+    /*
+     * This if statement is dependent on physical conditions, allowing the OTV to move further depending on where the the pylon ended up during randomization.
+     * The statement, along with the macro MIS_LOCO_DELAY_OFFSET can be removed or altered depending on the conditions of the arena and testing.
+     */
     if (mission->y == MIS_DY) {delay(MIS_LOCO_DELAY_OFFSET);}
     
     delay(SURROUND_DELAY);

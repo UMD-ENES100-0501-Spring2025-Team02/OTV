@@ -11,7 +11,10 @@
 #define M_T_TOLERANCE 0.2
 #define ALIGN_T_TOLERANCE 0.05
 
-// These values should be determined by taking the ArUco marker and recording the coordinates the vision system displays when the ArUco is placed directly on the mission sites
+/*
+ * These values should be determined by taking the ArUco marker and recording the coordinates the vision system displays when the ArUco is placed
+ * directly on the mission sites
+ */
 #define MIS_UX 0.3
 #define MIS_DX 0.3
 #define MIS_UY 1.55

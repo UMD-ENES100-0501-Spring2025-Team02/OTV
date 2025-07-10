@@ -23,8 +23,19 @@ void align_to_obstacles(){
     turn_to(OB_TURN_SPEED, 0, OB_T_TOLERANCE, NAV);
 }
 
-// The approach to the obstacles is split into two levels, the first level for the first column of obstacles, and the second level for the second column. At the first level, if the OTV hits an obstacle, it will enter obstacle_protocol() which checks each position until the OTV passes the level and saves the position of the last obstacle encountered to be used in the level two code. Since the OTV can go over the traversable obstacle, the approach to both levels is the same, with the exception of when the OTV enters the protocol on the first level. In that case, after passing the first level, the OTV will go straight back to the saved position to pass the second level of obstacles. The LOG_X macro is the x position of the OTV such that it is in position to do log navigation, not the log's x physical position.
-// EDIT: Thomas Kimberlin realizes that this code is quite messy and could have been broken down into more function. Additionally, he potentially found unnecessary code based on the logic of the strategy. However, during testing, no glaring bugs were encountered in this code like in other parts of the project code, so nothing was done. Thomas believes that if he had more time, he would have reformatted the code, but since the class is over, he does not want to alter the code and risk introducing more bugs that were not present.
+/*
+ * The approach to the obstacles is split into two levels, the first level for the first column of obstacles, and the second level for the second column.
+ * At the first level, if the OTV hits an obstacle, it will enter obstacle_protocol() which checks each position until the OTV passes the level and saves the
+ * position of the last obstacle encountered to be used in the level two code. Since the OTV can go over the traversable obstacle, the approach to both levels is
+ * the same, with the exception of when the OTV enters the protocol on the first level. In that case, after passing the first level, the OTV will go straight back
+ * to the saved position to pass the second level of obstacles. The LOG_X macro is the x position of the OTV such that it is in position to do log navigation, not
+ * the log's x physical position.
+ *
+ * EDIT: Thomas Kimberlin realizes that this code is quite messy and could have been broken down into more function. Additionally, he potentially found unnecessary
+ * code based on the logic of the strategy. However, during testing, no glaring bugs were encountered in this code like in other parts of the project code, so nothing
+ * was done. Thomas believes that if he had more time, he would have reformatted the code, but since the class is over, he does not want to alter the code and risk
+ * introducing more bugs that were not present.
+ */
 void obstacle_navigation(){
     float angle, go_to;
     int obstacle = FALSE;

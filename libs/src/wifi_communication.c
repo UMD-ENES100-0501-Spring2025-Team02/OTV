@@ -27,7 +27,12 @@ void get_coordinates(int pick){
     change_interval(&otv.theta);
 }
 
-// Due to the unreliability of the ENES100 Vision Systems, this function is used to negate unpredictable behavior by the OTV due to the inaccuracy of the vision system. This function is used to obtain the coordinates of the OTV rather than only calling get_coordinates() to ensure the correct coordinates are obtained. If the OTV is not visible to the vision system, it will stop in order for the vision system to locate it. However, if the ArUco marker is still not visible, the OTV will stay stationary. In that case, the OTV must be altered so that the ArUco marker can be located more consistently.
+/*
+ * Due to the unreliability of the ENES100 Vision Systems, this function is used to negate unpredictable behavior by the OTV due to the inaccuracy of the vision
+ * system. This function is used to obtain the coordinates of the OTV rather than only calling get_coordinates() to ensure the correct coordinates are obtained.
+ * If the OTV is not visible to the vision system, it will stop in order for the vision system to locate it. However, if the ArUco marker is still not visible, the
+ * OTV will stay stationary. In that case, the OTV must be altered so that the ArUco marker can be located more consistently.
+ */
 int visibility_check(int pick){
     get_coordinates(pick);
     while (!Enes100.isVisible()){
@@ -38,7 +43,11 @@ int visibility_check(int pick){
     get_coordinates(pick);
     delay(1);
     
-    // This function returns TRUE such that it can be used in if statements that continue the desired movement if the OTV stops due to invisibility. EDIT: This function may not need to be called with if statements to continue the desired movement, rather, the desired movement can just be called after visibility_check().
+    /*
+     * This function returns TRUE such that it can be used in if statements that continue the desired movement if the OTV stops due to invisibility.
+     * EDIT: This function may not need to be called with if statements to continue the desired movement, rather, the desired movement can just be called
+     * after visibility_check().
+     */
     return TRUE;
 }
 
