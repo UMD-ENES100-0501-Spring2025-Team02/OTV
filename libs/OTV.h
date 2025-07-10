@@ -6,7 +6,6 @@
 #include "ext_libs/ENES100ArduinoLibrary/Enes100.h"
 #include "ext_libs/ENES100ArduinoLibrary/VisionSystemClient.cpp"
 #include <Servo.h>
-// Get the servo library on here
 
 // Custom Libraries
 

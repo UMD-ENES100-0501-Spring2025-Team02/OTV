@@ -25,13 +25,19 @@
 
 // CONSTANTS
 
+// ArUco marker dependent
 #define MARKER_ID 401
-#define ROOM_NUMBER 1120
+
+// Vision system dependent
+#define ROOM_NUMBER 1116
+
+#define STAGE_SWITCH_DELAY 500
 
 // LIBRARIES
 
 #include "libs/OTV.h"
 
+// Good 2
 void setup() {
   Serial.begin(9600);
 
@@ -51,15 +57,22 @@ void setup() {
 
   CLAW.attach(CLAW_SERVO_PIN);
   FLIP.attach(FLIP_SERVO_PIN);
-  CLAW.write(0);
+
+  CLAW.write(OPEN_CLAW);
+  
 
   Enes100.begin("Oscar", DATA, MARKER_ID, ROOM_NUMBER, TX, RX);
   Enes100.println("Connected");
-  Serial.println("Connected");
 }
 
 void loop() {
+  stage01();
+  delay(STAGE_SWITCH_DELAY);
+  stage02();
+  delay(STAGE_SWITCH_DELAY);
   stage03();
-  delay(10000);
+  delay(STAGE_SWITCH_DELAY);
+  stage04();
+  delay(59000);
 }
 

@@ -1,3 +1,7 @@
+/*
+ * Written by Thomas Kimberlin
+ */
+
 #include "motor_controls.h"
 
 void move(int pwm, int dir, int face){

@@ -1,3 +1,7 @@
+/*
+ * Written by Thomas Kimberlin
+ */
+
 #ifndef STRUCTS_H
 #define STRUCTS_H
 

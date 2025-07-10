@@ -1,3 +1,7 @@
+/*
+ * Written by Thomas Kimberlin
+ */
+
 #ifndef OTV_MATH_H
 #define OTV_MATH_H
 

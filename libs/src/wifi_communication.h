@@ -1,3 +1,7 @@
+/*
+ * Written by Thomas Kimberlin
+ */
+
 #ifndef WIFI_COMMUNICATION_H
 #define WIFI_COMMUNICATION_H
 
@@ -16,6 +20,7 @@ int visibility_check(int pick);
 void serial_print_coordinates();
 void vision_print_coordinates();
 void print_coordinates();
+
 int compare_angles(coordinate origin, coordinate *compare, float tolerance, int *origin_t_greater);
 
 #endif WIFI_COMMUNICATION_H
